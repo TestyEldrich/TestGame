@@ -6,6 +6,8 @@ public class AiChase : MonoBehaviour
 {
     public GameObject player;
     public float mobSpeed;
+    public float followDistance;
+    public float rotateSpeed;
 
     private float distance;
 
@@ -22,7 +24,12 @@ public class AiChase : MonoBehaviour
         Vector2 direction = player.transform.position - transform.position;
         direction.Normalize();
 
-        if (distance < 8.5) {
+        if (distance < followDistance) {
+            if (direction.x < 0) {
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,180,0), Time.deltaTime * rotateSpeed);
+            }else if(direction.x > 0) {
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * rotateSpeed);
+            }
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, mobSpeed * Time.deltaTime);
         }
     }
