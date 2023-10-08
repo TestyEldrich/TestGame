@@ -16,8 +16,10 @@ public class CollisionDamage : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == collisionTag) {
+            FloatingHealthBar healthBar = collision.gameObject.GetComponentInChildren<FloatingHealthBar>();
             Health health = collision.gameObject.GetComponent<Health>();
             health.Damage(collisionDamage);
+            healthBar.UpdateHealthBar(health.currentHealth, health.maxHealth);
 
             StopAllCoroutines();
             OnBegin?.Invoke();
@@ -32,7 +34,9 @@ public class CollisionDamage : MonoBehaviour
 
     private IEnumerator Reset() {
         yield return new WaitForSeconds(delay);
-        rB2d.velocity = Vector3.zero;
+        if(rB2d != null) {
+            rB2d.velocity = Vector3.zero;
+        }
         OnBegin?.Invoke();
     }
 }

@@ -27,17 +27,19 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distance = Vector2.Distance(transform.position, target.transform.position);
-        Vector2 direction = target.transform.position - transform.position;
-        direction.Normalize();
-        if (distance < followDistance) {
-            if (direction.x < 0) {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 180, 0), Time.deltaTime * rotateSpeed);
+        if (target != null) {
+            distance = Vector2.Distance(transform.position, target.transform.position);
+            Vector2 direction = target.transform.position - transform.position;
+            direction.Normalize();
+            if (distance < followDistance) {
+                if (direction.x < 0) {
+                    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 180, 0), Time.deltaTime * rotateSpeed);
+                }
+                else if (direction.x > 0) {
+                    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * rotateSpeed);
+                }
+                agent.SetDestination(target.position);
             }
-            else if (direction.x > 0) {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * rotateSpeed);
-            }
-            agent.SetDestination(target.position);
         }
     }
 }
