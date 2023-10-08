@@ -9503,6 +9503,13 @@ MonoBehaviour:
   collisionDamage: 10
   collisionTag: Player
   pushForce: 10
+  delay: 0.25
+  OnBegin:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDone:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1209340352
 MonoBehaviour:
   m_ObjectHideFlags: 0
