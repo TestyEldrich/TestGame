@@ -11,9 +11,11 @@ public class InventoryUIManager : MonoBehaviour
     [SerializeField]
     public GameObject itemSlotPrefab;
     private InventorySystem inventorySystem;
+    private bool isHidden = false;
 
     public void Start() {
         inventorySystem = inventory.GetComponent<InventorySystem>();
+        ToggleInventory();
     }
 
     public void OnUpdateInventory() {
@@ -36,6 +38,17 @@ public class InventoryUIManager : MonoBehaviour
 
             SlotScript slot = obj.GetComponent<SlotScript>();
             slot.Set(item);
+        }
+    }
+
+    public void ToggleInventory() {
+        if (!isHidden) {
+            GameObject.Find("Inventory Bar").transform.localScale = new Vector3(0, 0, 0);
+            isHidden = true;
+        }
+        else if (isHidden) {
+            GameObject.Find("Inventory Bar").transform.localScale = new Vector3(1, 1, 1);
+            isHidden = false;
         }
     }
 }
