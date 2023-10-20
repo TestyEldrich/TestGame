@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: weapon_AK-47
   displayName: AK-47
+  type: weapon
   icon: {fileID: 21300000, guid: 6532bc2c52f179142a7333cc0f5faeda, type: 3}
   prefab: {fileID: 7233172919039431535, guid: d4e32c9fadf98b84a8d29ac8fe939c1f, type: 3}
