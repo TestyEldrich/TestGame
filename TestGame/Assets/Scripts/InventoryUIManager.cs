@@ -44,10 +44,12 @@ public class InventoryUIManager : MonoBehaviour
     public void ToggleInventory() {
         if (!isHidden) {
             GameObject.Find("Inventory Bar").transform.localScale = new Vector3(0, 0, 0);
+            GameObject.Find("Trash").transform.localScale = new Vector3(0, 0, 0);
             isHidden = true;
         }
         else if (isHidden) {
             GameObject.Find("Inventory Bar").transform.localScale = new Vector3(1, 1, 1);
+            GameObject.Find("Trash").transform.localScale = new Vector3(1, 1, 1);
             isHidden = false;
         }
     }

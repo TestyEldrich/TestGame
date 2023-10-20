@@ -24,7 +24,6 @@ public class InventorySystem : MonoBehaviour
             InventoryItem newItem = new InventoryItem(referenceData);
             inventory.Add(newItem);
             m_itemDictionary.Add(referenceData, newItem);
-            Debug.Log(message:inventory[0]);
             inventoryChanged.Raise();
         }
     }
@@ -32,12 +31,14 @@ public class InventorySystem : MonoBehaviour
     public void Remove(InventoryItemData referenceData) {
         if(m_itemDictionary.TryGetValue(referenceData, out InventoryItem value)) {
             value.RemoveFromStack();
-            inventoryChanged.Raise();
 
             if (value.stackSize == 0) {
                 inventory.Remove(value);
                 m_itemDictionary.Remove(referenceData);
-               inventoryChanged.Raise();
+                inventoryChanged.Raise();
+            }
+            else {
+                inventoryChanged.Raise();
             }
         }
     }
@@ -54,7 +55,12 @@ public class InventoryItem {
     }
 
     public void AddToStack() {
-        stackSize++;
+        if (data.type.Equals("ammo")) {
+            stackSize += 40;
+        }
+        else {
+            stackSize++;
+        }
     }
 
     public void RemoveFromStack() {

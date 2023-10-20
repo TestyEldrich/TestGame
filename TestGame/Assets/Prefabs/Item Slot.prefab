@@ -148,6 +148,8 @@ GameObject:
   - component: {fileID: 1543044229142137602}
   - component: {fileID: 833525959795566998}
   - component: {fileID: 6445050407128022290}
+  - component: {fileID: 1845321249}
+  - component: {fileID: 5494453518530383870}
   m_Layer: 0
   m_Name: Item Slot
   m_TagString: Untagged
@@ -252,6 +254,31 @@ MonoBehaviour:
   label: {fileID: 7242036018546314416}
   stackObj: {fileID: 5860744525584590520}
   stackNumber: {fileID: 2602296131813377028}
+--- !u!114 &1845321249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5155269891636223569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0231fa048e6627540baabcebf4a7f5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+--- !u!225 &5494453518530383870
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5155269891636223569}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5860744525584590520
 GameObject:
   m_ObjectHideFlags: 0
