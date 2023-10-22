@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAimWeapon : MonoBehaviour
 {
     public GameObject bulletPrefab;
+    public InventoryItemData itemData;
     public float bulletForce;
     public Transform firePoint;
+    public GameObject weapon;
+    public GameObject inventory;
 
+    private InventorySystem inventorySystem;
     private Transform aimTransform;
     private float minDistance = 0;
     Vector3 aimDirection;
@@ -16,6 +21,7 @@ public class PlayerAimWeapon : MonoBehaviour
     public GameEvent shoot;
 
     private void Awake() {
+        inventorySystem = inventory.GetComponent<InventorySystem>();
         aimTransform = transform.Find("Aim");
     }
 
@@ -45,9 +51,11 @@ public class PlayerAimWeapon : MonoBehaviour
     }
 
     public void Shoot() {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);
-        shoot.Raise();
+        if(weapon.GetComponent<SpriteRenderer>().sprite != null && inventorySystem.m_itemDictionary.TryGetValue(itemData, out InventoryItem value)) {
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);
+            shoot.Raise();
+        }
     }
 }
