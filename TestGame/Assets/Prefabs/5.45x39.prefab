@@ -116,4 +116,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionTag: Player
   referenceItem: {fileID: 11400000, guid: 08af086d0a48f90449db0fa0100988b8, type: 2}
-  inventory: {fileID: 0}
+  inventory: {fileID: 8571430188518393345, guid: 7dd711f0b86f70443a4e1a224c6fef66, type: 3}

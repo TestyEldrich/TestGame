@@ -8,9 +8,12 @@ public class PlayerAimWeapon : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletForce;
     public Transform firePoint;
+
     private Transform aimTransform;
     private float minDistance = 0;
     Vector3 aimDirection;
+    [Header("Events")]
+    public GameEvent shoot;
 
     private void Awake() {
         aimTransform = transform.Find("Aim");
@@ -45,5 +48,6 @@ public class PlayerAimWeapon : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);
+        shoot.Raise();
     }
 }

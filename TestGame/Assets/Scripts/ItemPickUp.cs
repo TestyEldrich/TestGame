@@ -11,9 +11,10 @@ public class ItemPickUp : MonoBehaviour
     public InventoryItemData referenceItem;
     private InventorySystem inventorySystem;
     [SerializeField]
-    public GameObject inventory;
+    private GameObject inventory;
 
     private void Start() {
+        inventory = GameObject.Find("Inventory");
         inventorySystem = inventory.GetComponent<InventorySystem>();
     }
 
