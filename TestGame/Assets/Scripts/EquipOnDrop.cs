@@ -9,7 +9,6 @@ public class EquipOnDrop : MonoBehaviour, IDropHandler{
 
     private InventoryItemData inventoryItemData;
     private GameObject equippedSlot;
-    [SerializeField]
     private GameObject weapon;
 
     public void OnDrop(PointerEventData eventData) {
