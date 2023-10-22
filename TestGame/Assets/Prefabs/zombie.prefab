@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 207570321593214416}
   m_Layer: 0
   m_Name: zombie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -522,6 +522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 50
   maxHealth: 50
+  dropLoot: {fileID: 4328214509123563448, guid: 6941e4f72eb2e0c45972d87ac95b946f, type: 3}
 --- !u!114 &3995126651578110527
 MonoBehaviour:
   m_ObjectHideFlags: 0

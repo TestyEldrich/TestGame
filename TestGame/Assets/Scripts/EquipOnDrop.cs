@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class EquipOnDrop : MonoBehaviour, IDropHandler{
 
     private InventoryItemData inventoryItemData;
     private GameObject equippedSlot;
-    
+    private GameObject weapon;
+
     public void OnDrop(PointerEventData eventData) {
         if (eventData.pointerDrag != null) {
             inventoryItemData = eventData.pointerDrag.GetComponent<SlotScript>().inventoryItemData;
@@ -19,6 +20,8 @@ public class EquipOnDrop : MonoBehaviour, IDropHandler{
                         GameObject.Destroy(child.gameObject);
                     }
                 }
+                weapon = GameObject.Find("Weapon");
+                weapon.GetComponent<SpriteRenderer>().sprite = inventoryItemData.icon;
                 equippedSlot = Instantiate(eventData.pointerDrag, transform);
                 equippedSlot.GetComponent<RectTransform>().localScale = new Vector2(1.2f, 1.2f);
                 equippedSlot.GetComponent<RectTransform>().anchoredPosition = new Vector2(50, 50);
